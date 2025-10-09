@@ -21,7 +21,7 @@ Será una página en Flask con los siguientes atributos:
 - Mensaje de bienvenida al proyecto
 - Fondo de la página: un paisaje natural o un amanecer
 - Explicación de mi decisión
-- Enlaces a los 3 proyectos
+- Enlaces a los 3 proyectos  
 [:arrow_up:](#proyecto-final-del-curso-de-python-con-deusto)
 
 ### :card_index: Proyecto agenda
@@ -35,11 +35,11 @@ Se trata de un gestor de contactos con la capacidad de realizar las operaciones 
   - Eliminar contacto
   - Mostrar todos
 - Almacenamiento: se me pide formato JSON, pero creo que prefiero seguir usando sqlite3.
-- Control de inputs mediante RegEx (nombre: letras, tlf: 9 dígitos, email: `x@x.x`).
+- Control de inputs mediante RegEx (nombre: letras, tlf: 9 dígitos, email: `x@x.x`).  
 [:arrow_up:](#proyecto-final-del-curso-de-python-con-deusto)
 
 
 ### :person_bald: Proyecto usuarios
 
-
+Se trata de  
 [:arrow_up:](#proyecto-final-del-curso-de-python-con-deusto)
