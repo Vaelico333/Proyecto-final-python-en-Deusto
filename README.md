@@ -7,8 +7,8 @@ Se me propusieron 3 opciones sencillas, pero he decidido hacer una mezcla de las
 - App en Flask para contener y mostrar el proyecto
   - [Página de bienvenida](#wave-página-de-bienvenida): Mensaje de bienvenida y acceso a los 3 proyectos.
   - [Proyecto agenda](#card_index-proyecto-agenda)
-  - [Proyecto usuarios]()
-  - [Proyecto análisis]()
+  - [Proyecto usuarios](#person_bald-proyecto-usuarios)
+  - [Proyecto análisis](#bar_chart-proyecto-análisis)
 
 ## :card_file_box: Desglose
 
@@ -42,4 +42,9 @@ Se trata de un gestor de contactos con la capacidad de realizar las operaciones 
 ### :person_bald: Proyecto usuarios
 
 Se trata de  
+[:arrow_up:](#proyecto-final-del-curso-de-python-con-deusto)
+
+### :bar_chart: Proyecto análisis
+
+Se trata de
 [:arrow_up:](#proyecto-final-del-curso-de-python-con-deusto)
