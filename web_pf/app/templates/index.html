@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        {% if title %}
-        <title>{{ title }} - Proyecto final de python</title>
-        {% else %}
-        <title>Bienvenido a mi proyecto final de python con Deusto</title>
-    </head>
-    <body>
-        <h1>¡Bienvenido, {{ user.username }}!<h1>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+        <h1>¡Bienvenido, {{ user.username }}!</h1>
+        {% for post in posts %}
+        <div><p><i>{{ post.author.username }} dice:</i> <b>{{ post.body }}</b></p></div>
+        {% endfor %}
+{% endblock %}
