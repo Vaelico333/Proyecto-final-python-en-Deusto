@@ -10,7 +10,13 @@
     <body>
         <div>Proyecto final: 
             <a href={{ url_for("index") }}>Inicio </a>
-            <a href={{ url_for("login") }}>Acceso </a>
+            <!-- Acceder/cerrar sesión debería ir al final del div, 
+             introducir cualquier otra página antes del siguiente código: -->
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Acceder</a>
+            {% else %}
+            <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+            {% endif %}
         </div>
         <hr>
         {% with messages = get_flashed_messages() %}
