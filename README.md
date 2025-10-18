@@ -36,8 +36,8 @@ Se trata de un gestor de contactos con la capacidad de realizar las operaciones 
   - Editar contacto
   - Eliminar contacto
   - Mostrar todos
-- Almacenamiento: se me pide formato JSON, pero creo que prefiero seguir usando sqlite3.
-- Control de inputs mediante RegEx (nombre: letras, tlf: 9 dígitos, email: `x@x.x`).  
+- Almacenamiento: usaré SQLAlchemy, la extensión de Flask para bases de datos. Tendrá su propia tabla.
+- Control de inputs mediante RegEx (nombre: letras, tlf: 9 dígitos, email: `x@x.x`) o herramientas integradas de Flask.  
 
 **Observaciones**:
 
@@ -68,7 +68,7 @@ Se trata de un panel de administración de usuarios.
 **Observaciones**:
 
 - Árbol de páginas web interconectadas
-- Almacenamiento: archivo JSON
+- Almacenamiento: tabla en SQLite con SQLAlchemy.
 - Incluir botón de vuelta a la página de bienvenida del proyecto.  
 - Incluir botón de vuelta a la página de menú principal.
 
