@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h1>Editar Usuario</h1>
+  <form method="POST" action="{{ url_for('usuarios.edit', user_id=user.id) }}">
+    <label>Email</label>
+    <input type="email" name="email" value="{{ user.email }}" required>
+    <label>Nombre</label>
+    <input type="text" name="name" value="{{ user.name }}" required>
+    <label>Apellidos</label>
+    <input type="text" name="surname" value="{{ user.surname }}" required>
+    <label>Contraseña</label>
+    <input type="password" name="password" value="{{ user.password }}" required>
+    <label>Teléfono</label>
+    <input type="text" name="phone" value="{{ user.phone }}" required>
+    <label>Edad</label>
+    <input type="number" name="age" value="{{ user.age }}" required>
+    <button type="submit">Guardar</button>
+  </form>
+</div>
+{% endblock %}

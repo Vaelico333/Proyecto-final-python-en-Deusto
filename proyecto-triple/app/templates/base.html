@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Inicio - Proyecto Final</title>
+    {% endif %}
+</head>
+<body>
+    <header>
+        <h1>Bienvenido al Proyecto Final</h1>
+        <nav>
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('usuarios.login') }}"><b>Acceder</b></a>
+            {% else %}
+            <a href="{{ url_for('usuarios.logout') }}"><b>Cerrar sesión</b></a>
+            {% endif %}
+            <a href="{{ url_for('agenda.index') }}">Agenda</a>
+            <a href="{{ url_for('usuarios.index') }}">Usuarios</a>
+            <a href="{{ url_for('analisis.index') }}">Análisis</a>
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Darío Zoreda</p>
+    </footer>
+</body>
+</html>

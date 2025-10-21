@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Gráfica de Barras - Análisis</title>
+</head>
+<body>
+    <header>
+        <h1>Gráfica de Barras</h1>
+        <nav>
+            <a href="{{ url_for('analisis.index') }}">Inicio Análisis</a>
+            <a href="{{ url_for('agenda.index') }}">Agenda</a>
+            <a href="{{ url_for('usuarios.index') }}">Usuarios</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Datos de Análisis</h2>
+        <div>
+            <!-- Aquí se incluirá la gráfica de barras generada en el backend -->
+            <img src="{{ url_for('analisis.get_bar_chart') }}" alt="Gráfica de Barras">
+        </div>
+    </main>
+    <footer>
+        <p>&copy;  2025 Darío Zoreda</p>
+    </footer>
+</body>
+</html>

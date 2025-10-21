@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Paleta y tokens */
+:root {
+  --bg: #0f172a;
+  --bg-grad-1: #0f172a;
+  --bg-grad-2: #1e293b;
+  --card: #0ea5a5;
+  --card-soft: rgba(14, 165, 165, 0.12);
+  --primary: #ff6b6b;
+  --primary-700: #e85a5a;
+  --primary-800: #d94d4d;
+  --accent: #22c55e;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --shadow: 0 8px 24px rgba(0,0,0,0.25);
+  --radius: 14px;
+  --radius-sm: 10px;
+  --transition: 220ms ease;
+}
+
+/* Tipografía y fondo generales */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2));
+}
+
+main {
+  background: transparent;
+}
+
+/* Cabecera con degradado y sombra */
+header {
+  background: linear-gradient(135deg, var(--primary), #f59e0b);
+  color: #fff;
+  box-shadow: var(--shadow);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  text-align: center;
+}
+
+/* Título principal */
+h1#proyecto-final-del-curso-de-python-con-deusto {
+  margin: 0.4em 0 0.6em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background:#d94d4d;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+
+/* Contenedor centrado y con respiración */
+.container {
+  width: min(100%, 1040px);
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+/* Navegación: estilo píldora, hover y foco accesible */
+nav {
+  margin: 20px 0 26px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+nav a {
+  color: #0f172a;
+  background: #fff;
+  border-radius: 999px;
+  padding: 10px 16px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform var(--transition), background var(--transition), color var(--transition), box-shadow var(--transition);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+nav a:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+nav a:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.35);
+}
+
+/* Bloques de contenido en formato tarjeta moderna */
+.bloque_contenido {
+  background: linear-gradient(180deg, var(--card-soft), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.4em 1.6em;
+  margin: 10px 0 18px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.bloque_contenido:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.35);
+  border-color: rgba(255,255,255,0.18);
+}
+
+/* Títulos de bloque con acento */
+.bloque_contenido h3 {
+  color: #ffffff;
+  font-weight: 600;
+  margin-top: 0.2em;
+}
+
+/* Sección #desglose con cinta acento */
+#desglose {
+  position: relative;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  border-radius: var(--radius);
+  padding: 1.2em 1.6em 1.4em;
+  box-shadow: var(--shadow);
+}
+
+#desglose::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  height: 6px;
+  background: linear-gradient(90deg, var(--accent), #34d399, #86efac);
+}
+
+/* Lista y enlaces dentro de tarjetas */
+.bloque_contenido a {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.bloque_contenido a:hover {
+  color: #ffe4e6;
+  border-color: #ffe4e6;
+}
+
+/* Footer oscuro consistente */
+footer {
+  background: #0b1220;
+  color: var(--muted);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  header { border-radius: 0 0 var(--radius) var(--radius); }
+  .bloque_contenido { padding: 1.1em 1.2em; }
+  nav { gap: 8px; }
+  nav a { padding: 9px 14px; }
+  h1#proyecto-final-del-curso-de-python-con-deusto { font-size: 1.8rem; }
+}
+
+/* Accesibilidad: foco visible en enlaces dentro del contenido */
+.bloque_contenido a:focus-visible {
+  outline: 3px solid #ffe4e6;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
