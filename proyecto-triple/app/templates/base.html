@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <h1>Bienvenido al Proyecto Final</h1>
+        <h1><a href="{{ url_for('inicio') }}"> Proyecto Final </a></h1>
         <nav>
             {% if current_user.is_anonymous %}
             <a href="{{ url_for('usuarios.login') }}"><b>Acceder</b></a>

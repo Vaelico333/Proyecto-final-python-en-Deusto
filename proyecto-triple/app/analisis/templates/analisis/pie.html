@@ -1,44 +1,25 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>Gráfica Circular - Análisis</title>
-</head>
-<body>
-    <header>
-        <h1>Gráfica Circular de Análisis</h1>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('analisis.index') }}">Inicio</a></li>
-                <li><a href="{{ url_for('analisis.bar') }}">Gráfica de Barras</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
+{% extends "base.html" %}
+
+{% block content %}
         <h2>Seleccione los datos a mostrar</h2>
         <form method="POST" action="{{ url_for('analisis.pie') }}">
             <label for="data_type">Tipo de datos:</label>
             <select name="data_type" id="data_type">
-                <option value="defunciones">Defunciones</option>
-                <option value="casos">Casos</option>
-                <option value="hospitalizados">Hospitalizados</option>
-                <option value="uci">UCI</option>
+                <option value="num_def">Defunciones</option>
+                <option value="new_cases">Casos</option>
+                <option value="num_hosp">Hospitalizados</option>
+                <option value="num_uci">UCI</option>
             </select>
-            <button type="submit">Mostrar Gráfica</button>
+            <button type="submit" name="top10">
+                Mostrar TOP 10
+            </button>
+            <button type="submit">Mostrar todos</button>
         </form>
 
         {% if chart_data %}
-            <h3>Gráfica Circular</h3>
+            <h3>{{ chart_title }}</h3>
             <div>
-                <!-- Aquí se mostraría la gráfica circular generada en el backend -->
-                <img src="{{ chart_data }}" alt="Gráfica Circular">
+                <img src="{{ chart_data }}" alt="Gráfica de distribución por provincias">
             </div>
         {% endif %}
-    </main>
-    <footer>
-        <p>&copy;  2025 Darío Zoreda</p>
-    </footer>
-</body>
-</html>
+{% endblock %}

@@ -1,31 +1,22 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análisis de Datos</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
-    <header>
-        <h1>Bienvenido al Proyecto de Análisis de Datos</h1>
-        <nav>
+{% extends "base.html" %}
+
+{% block content %}
+        <h2>Análisis de datos del COVID de mayo del 2021 en España</h2>
+        Selecciona una opción de análisis:
+        <div class="bloque_contenido">
+            <a href="{{ url_for('analisis.bar') }}">🇪🇸📊 Análisis por provincias y día de la semana</a>
             <ul>
-                <li><a href="{{ url_for('agenda.index') }}">Agenda</a></li>
-                <li><a href="{{ url_for('usuarios.index') }}">Usuarios</a></li>
-                <li><a href="{{ url_for('analisis.index') }}">Análisis</a></li>
+                <li>Esta opción permite analizar cuatro posibles categorías 
+                    (defunciones, casos nuevos, hospitalizaciones e ingresos en UCI)
+                    mediante una <b>gráfica de barras</b>, desglosada por día de la semana y provincia.
+                </li>
             </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>Seleccione una opción de análisis</h2>
-        <ul>
-            <li><a href="{{ url_for('analisis.bar_chart') }}">Gráfica de Barras</a></li>
-            <li><a href="{{ url_for('analisis.pie_chart') }}">Gráfica Circular</a></li>
-        </ul>
-    </main>
-    <footer>
-        <p>&copy;  2025 Darío Zoreda</p>
-    </footer>
-</body>
-</html>
+            <a href="{{ url_for('analisis.pie') }}">🇪🇸🟢 Análisis por provincias</a>
+            <ul>
+                <li>Esta opción permite analizar cuatro posibles categorías 
+                    (defunciones, casos nuevos, hospitalizaciones e ingresos en UCI)
+                    mediante una <b>gráfica circular</b>, desglosada por provincia.
+                </li>
+            </ul>
+        </div>
+{% endblock %}

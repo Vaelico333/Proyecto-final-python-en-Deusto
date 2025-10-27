@@ -40,6 +40,11 @@ header {
   text-align: center;
 }
 
+header a {
+  text-decoration: none;
+  color: #ffe4e6;
+}
+
 /* Título principal */
 h1#proyecto-final-del-curso-de-python-con-deusto {
   margin: 0.4em 0 0.6em;
