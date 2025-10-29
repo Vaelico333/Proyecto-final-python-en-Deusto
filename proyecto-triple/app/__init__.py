@@ -1,8 +1,9 @@
 from flask import Flask
 from config import Config
 from flask_login import LoginManager
-from .extensions import db
+from flask_sqlalchemy import SQLAlchemy
 
+db = SQLAlchemy()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'go_rhaibh_math_agat'
 app.config.from_object(Config)

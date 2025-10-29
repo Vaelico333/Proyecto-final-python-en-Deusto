@@ -1,40 +1,38 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Contactos</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
-    <div class="container">
+{% extends "base.html" %}
+{% block content %}
         <h1>Lista de Contactos</h1>
-        <a href="{{ url_for('agenda.create') }}">Agregar Nuevo Contacto</a>
+        <nav><a href="{{ url_for('agenda.crear') }}">Agregar Nuevo Contacto</a></nav>
+    <div class="bloque_contenido">
         <table border="5">
             <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Número de Teléfono</th>
                     <th>Email</th>
+                    {% if user_id == 1 %}
+                    <th>Propietario</th>
+                    {% endif %}
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                {% for contacto in contactos %}
+                {% for c in contactos %}
                 <tr>
-                    <td>{{ contacto.nombre }}</td>
-                    <td>{{ contacto.telefono }}</td>
-                    <td>{{ contacto.email }}</td>
+                    <td>{{ c.nombre }}</td>
+                    <td>{{ c.telefono }}</td>
+                    <td>{{ c.email }}</td>
+                    {% if user_id == 1 %}
+                    <td>{{ c.user_id }}</td>
+                    {% endif %}
                     <td>
-                        <a href="{{ url_for('agenda.edit', contacto_id=contacto.id) }}">Editar</a>
-                        <a href="{{ url_for('agenda.detail', contacto_id=contacto.id) }}">Detalles</a>
-                        <a href="{{ url_for('agenda.delete', contacto_id=contacto.id) }}">Eliminar</a>
+                        <a href="{{ url_for('agenda.editar', contact_id=c.id) }}">Editar</a>
+                        <a href="{{ url_for('agenda.detalle', contact_id=c.id) }}">Detalles</a>
+                        <a href="{{ url_for('agenda.borrar', contact_id=c.id) }}">Eliminar</a>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <a href="{{ url_for('index') }}">Volver a la Página de Bienvenida</a>
+        <a href="{{ url_for('index') }}">↩️ Volver a la Página de Bienvenida</a>
     </div>
-</body>
-</html>
+{% endblock %}

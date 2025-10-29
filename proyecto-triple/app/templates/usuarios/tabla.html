@@ -2,31 +2,42 @@
 {% block content %}
 <div class="container">
   <h1>Panel de Gestión de Usuarios</h1>
-  <ul>
-    <li><a href="{{ url_for('usuarios.create') }}">Crear Usuario</a></li>
-    <li><a href="{{ url_for('usuarios.index') }}">Ver Usuarios</a></li>
-    <li><a href="{{ url_for('usuarios.logout') }}">Cerrar sesión</a></li>
-  </ul>
+    <nav>
+      <a href="{{ url_for('usuarios.create') }}">Crear Usuario</a>
+      <a href="{{ url_for('usuarios.logout') }}">Cerrar sesión</a>
+    </nav>
   {% if users %}
+  <div class="bloque_contenido">
   <table>
-    <thead><tr><th>ID</th><th>Email</th><th>Nombre</th><th>Apellidos</th><th>Acciones</th></tr></thead>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Teléfono</th>
+        <th>Edad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
     <tbody>
     {% for u in users %}
       <tr>
         <td>{{ u.id }}</td>
         <td>{{ u.email }}</td>
-        <td>{{ u.name }}</td>
-        <td>{{ u.surname }}</td>
+        <td>{{ u.nombre }}</td>
+        <td>{{ u.apellidos }}</td>
+        <td>{{ u.telefono }}</td>
+        <td>{{ u.edad }}</td>
         <td>
-          <a href="{{ url_for('usuarios.edit', user_id=u.id) }}">Editar</a> |
+          <a href="{{ url_for('usuarios.confirmar', user_id=u.id) }}">Editar</a> |
           <a href="{{ url_for('usuarios.delete', user_id=u.id) }}">Borrar</a>
         </td>
       </tr>
     {% endfor %}
     </tbody>
   </table>
-  {% else %}
-    <p>No hay usuarios todavía.</p>
+  </div>
   {% endif %}
 </div>
 {% endblock %}

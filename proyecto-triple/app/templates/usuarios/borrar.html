@@ -2,10 +2,11 @@
 {% block content %}
 <div class="container">
   <h1>Borrar Usuario</h1>
-  <p>¿Seguro que quieres borrar a {{ user.name }} {{ user.surname }}?</p>
-  <form method="POST" action="{{ url_for('usuarios.delete', user_id=user.id) }}">
-    <button type="submit">Confirmar borrado</button>
-    <a href="{{ url_for('usuarios.index') }}">Cancelar</a>
+  <p>¿Seguro que quieres borrar a {{ user.nombre }} {{ user.apellidos }}?</p>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.confirmar() }}
+    {{ form.cancelar() }}
   </form>
 </div>
 {% endblock %}

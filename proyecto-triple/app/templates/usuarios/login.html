@@ -1,20 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-  <h1>Iniciar Sesión</h1>
-  <form method="POST" action="{{ url_for('usuarios.login') }}">
-      <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group">
-          <label for="password">Contraseña:</label>
-          <input type="password" id="password" name="password" required>
-      </div>
-      <button type="submit">Iniciar Sesión</button>
-  </form>
-  <p>¿No tienes una cuenta? <a href="{{ url_for('usuarios.create') }}">Crea una aquí</a>.</p>
-  <p><a href="{{ url_for('index') }}">Volver al inicio</a></p>
+<div class="bloque_contenido">
+    <h1>Acceso de miembros</h1>
+    <form method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.contraseña.label }}<br>
+            {{ form.contraseña(size=32) }}
+            {% for error in form.contraseña.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit }}</p>
+    </form>
+    <p>¿Nuevo usuario? <a href="{{ url_for('usuarios.create') }}"><b>Regístrate</b></a></p>
 </div>
 {% endblock %}

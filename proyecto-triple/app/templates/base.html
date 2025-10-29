@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     {% if title %}
-    <title>{{ title }}</title>
+    <title>{{ title }} - Proyecto Final</title>
     {% else %}
     <title>Inicio - Proyecto Final</title>
     {% endif %}
@@ -18,15 +18,31 @@
             {% else %}
             <a href="{{ url_for('usuarios.logout') }}"><b>Cerrar sesión</b></a>
             {% endif %}
+
             <a href="{{ url_for('agenda.index') }}">Agenda</a>
+            {% if current_user.id == 1 %}
             <a href="{{ url_for('usuarios.index') }}">Usuarios</a>
+            {% endif %}
             <a href="{{ url_for('analisis.index') }}">Análisis</a>
         </nav>
     </header>
     
     <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}   
+
         {% block content %}
         {% endblock %}
+    {% if current_user.is_authenticated %}
+    <p><em>Estás conectado como {{ current_user.nombre }}</em></p>
+    {% endif %}
     </main>
 
     <footer>

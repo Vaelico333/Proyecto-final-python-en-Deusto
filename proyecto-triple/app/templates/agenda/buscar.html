@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-
 {% block content %}
-<div class="bloque_contenido">
-    <h1>Nuevo contacto</h1>
-    <form method="post" novalidate>
+
+    <div class="bloque_contenido">
+        <h1>Buscar contacto</h1>
+        <form method="POST" novalidate>
         {{ form.hidden_tag() }}
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -15,28 +15,14 @@
         {% endif %}
         {% endwith %}   
         <p>
-            {{ form.email.label }}<br>
-            {{ form.email(size=32) }}
-            {% for error in form.email.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
             {{ form.nombre.label }}<br>
             {{ form.nombre(size=32) }}
             {% for error in form.nombre.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>
-            {{ form.telefono.label }}<br>
-            {{ form.telefono(size=32) }}
-            {% for error in form.telefono.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
         <p>{{ form.submit }}</p>
-    </form>
     <a href="{{ url_for('agenda.index') }}">↩️ Volver a la agenda</a>
-</div>
+    </div>
+
 {% endblock %}

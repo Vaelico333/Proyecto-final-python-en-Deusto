@@ -7,3 +7,4 @@ class Config:
         'sqlite:///' + os.path.join(basedir, 'data', 'app.db')
     DATA_PATH = os.path.join(basedir, 'data', 'covid.csv')
     ANALYSIS_STORE = os.path.join(basedir, 'data', 'analysis_store.txt')
+    LOGIN_MESSAGE = "Por favor, identifícate para continuar."

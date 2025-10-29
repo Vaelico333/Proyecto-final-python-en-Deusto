@@ -1,21 +1,60 @@
 {% extends "base.html" %}
+
 {% block content %}
-<div class="container">
-  <h1>Editar Usuario</h1>
-  <form method="POST" action="{{ url_for('usuarios.edit', user_id=user.id) }}">
-    <label>Email</label>
-    <input type="email" name="email" value="{{ user.email }}" required>
-    <label>Nombre</label>
-    <input type="text" name="name" value="{{ user.name }}" required>
-    <label>Apellidos</label>
-    <input type="text" name="surname" value="{{ user.surname }}" required>
-    <label>Contraseña</label>
-    <input type="password" name="password" value="{{ user.password }}" required>
-    <label>Teléfono</label>
-    <input type="text" name="phone" value="{{ user.phone }}" required>
-    <label>Edad</label>
-    <input type="number" name="age" value="{{ user.age }}" required>
-    <button type="submit">Guardar</button>
-  </form>
+<div class="bloque_contenido">
+    <h1>Editar usuario</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}   
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.nombre.label }}<br>
+            {{ form.nombre(size=32) }}
+            {% for error in form.nombre.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.apellidos.label }}<br>
+            {{ form.apellidos(size=32) }}
+            {% for error in form.apellidos.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.telefono.label }}<br>
+            {{ form.telefono(size=32) }}
+            {% for error in form.telefono.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.edad.label }}<br>
+            {{ form.edad(size=32) }}
+            {% for error in form.edad.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit }}</p>
+    </form>
+    {% if current_user.is_authenticated %}
+    <a href="{{ url_for('usuarios.index') }}">Panel de Gestión de Usuarios</a>
+    {% else %}
+    <p>¿Ya tienes cuenta? <a href="{{ url_for('usuarios.login') }}"><b>Accede</b></a></p>
+    {% endif %}
 </div>
 {% endblock %}

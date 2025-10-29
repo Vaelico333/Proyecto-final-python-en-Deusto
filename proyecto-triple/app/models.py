@@ -3,23 +3,37 @@ import sqlalchemy as sa
 import sqlalchemy.orm as so
 from app import db, acceso
 from flask_login import UserMixin
-from werkzeug.security import generate_password_hash as generar_hash_contraseña, check_password_hash as comprobar_hash_contr
+from werkzeug.security import generate_password_hash, check_password_hash 
 
-class User(UserMixin, db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = 'usuarios'
+
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    usuario: so.Mapped[str] = so.mapped_column(sa.String(64), index=True, unique=True)
     email: so.Mapped[str] = so.mapped_column(sa.String(64), index=True, unique=True)
+    nombre: so.Mapped[str] = so.mapped_column(sa.String(64), index=True, unique=False)
+    apellidos: so.Mapped[str] = so.mapped_column(sa.String(64), index=True, unique=False)
+    telefono: so.Mapped[int] = so.mapped_column(sa.Integer(), index=True, unique=False)
+    edad: so.Mapped[int] = so.mapped_column(sa.Integer(), index=True, unique=False)
     hash_contraseña: so.Mapped[str] = so.mapped_column(sa.String(256))
 
     def set_password(self, contraseña):
-        self.hash_contraseña = generar_hash_contraseña(contraseña)
+        self.hash_contraseña = generate_password_hash(contraseña)
 
     def check_password(self, contraseña):
-        return comprobar_hash_contr(self.hash_contraseña, contraseña)
+        return check_password_hash(self.hash_contraseña, contraseña)
+    
+    def update_user(self, user_id, new):
+        update = self.query.filter(self.id == user_id).update(new)
+        db.session.commit()
+        return update
+    
+    def delete(self, user_id):
+        delete = db.session.query(User).filter(User.id == user_id).delete()
+        db.session.commit()
+        return delete
     
     def __repr__(self):
-        return '<User {}>'.format(self.usuario)
+        return '<User {}>'.format(self.nombre)
 
 
 @acceso.user_loader

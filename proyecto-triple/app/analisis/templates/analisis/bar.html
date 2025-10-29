@@ -2,24 +2,34 @@
 
 {% block content %}
         <h2>Seleccione los datos a mostrar</h2>
-        <form method="POST" action="{{ url_for('analisis.bar') }}">
-            <label for="data_type">Tipo de datos:</label>
-            <select name="data_type" id="data_type">
-                <option value="num_def">Defunciones</option>
-                <option value="new_cases">Casos</option>
-                <option value="num_hosp">Hospitalizados</option>
-                <option value="num_uci">UCI</option>
-            </select>
-            <button type="submit" name="top10">
-                Mostrar TOP 10
-            </button>
-            <button type="submit">Mostrar todos</button>
-        </form>
+        <div class="bloque_contenido" id="desglose">
+            <form method="POST" action="{{ url_for('analisis.bar') }}">
+                <label for="data_type">Tipo de datos:</label>
+                <select name="data_type" id="data_type">
+                    <option value="num_def">Defunciones</option>
+                    <option value="new_cases">Casos</option>
+                    <option value="num_hosp">Hospitalizados</option>
+                    <option value="num_uci">UCI</option>
+                </select>
+                <button type="submit" name="top10">
+                    Mostrar TOP 10
+                </button>
+                <button type="submit">Mostrar todos</button>
+            </form>
+        </div>
 
         {% if chart_data %}
-            <h2>{{ chart_title }}</h2>
+            <h3>{{ chart_title.capitalize() }}</h3>
             <div>
                 <img src="{{ chart_data }}" alt="Gráfica de distribución por provincia y día de la semana">
+            </div>
+            <div class="bloque_contenido" id="desglose">
+                <p>
+                    <u>{{ chart_title.capitalize() }}:</u><br>
+                    ❌ <b>{{ title_result[0] }}</b> muestra el máximo de {{ chart_title }}.<br>
+                    ✔️ <b>{{ title_result[1] }}</b> muestra el mínimo de {{ chart_title }}.<br>
+                    Nota: en caso de empate en el puesto superior, se mostrará el primero en orden alfabético, y viceversa en el puesto inferior.
+                </p>
             </div>
         {% endif %}
 {% endblock %}

@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles del Contacto</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
     {% extends 'base.html' %}
 
     {% block content %}
     <h1>Detalles del Contacto</h1>
-    <div class="contact-details">
+    <div class="bloque_contenido" id="desglose">
+        <h2>Contacto de {{ user.nombre }}</h2>
         <p><strong>Nombre:</strong> {{ contact.nombre }}</p>
         <p><strong>Número de Teléfono:</strong> {{ contact.telefono }}</p>
         <p><strong>Email:</strong> {{ contact.email }}</p>
+    <a href="{{ url_for('agenda.lista_contactos') }}">↩️ Volver a la lista de contactos</a>
     </div>
-    <a href="{{ url_for('agenda.list') }}">Volver a la lista de contactos</a>
     {% endblock %}
-</body>
-</html>

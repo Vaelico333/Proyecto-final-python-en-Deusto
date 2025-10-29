@@ -3,7 +3,7 @@
 {% block content %}
         <h2>Análisis de datos del COVID de mayo del 2021 en España</h2>
         Selecciona una opción de análisis:
-        <div class="bloque_contenido">
+        <div class="bloque_contenido" id="desglose">
             <a href="{{ url_for('analisis.bar') }}">🇪🇸📊 Análisis por provincias y día de la semana</a>
             <ul>
                 <li>Esta opción permite analizar cuatro posibles categorías 
@@ -11,6 +11,8 @@
                     mediante una <b>gráfica de barras</b>, desglosada por día de la semana y provincia.
                 </li>
             </ul>
+        </div>
+        <div class="bloque_contenido" id="desglose">
             <a href="{{ url_for('analisis.pie') }}">🇪🇸🟢 Análisis por provincias</a>
             <ul>
                 <li>Esta opción permite analizar cuatro posibles categorías 
