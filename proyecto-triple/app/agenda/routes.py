@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from ..models import User
 from .models import Contact
 from .forms import ContactForm, SearchForm
-from ..extensions import db
+from app import db
 from . import agenda_bp
 import sqlalchemy as sa
 
@@ -32,7 +32,7 @@ def lista_contactos():
 def crear():
     form = ContactForm()
     if form.validate_on_submit():
-        new_contact = Contact(nombre=form.nombre.data, telefono=form.telefono.data, email=form.email.data, user_id=current_user.id)
+        new_contact = Contact(nombre=form.nombre.data.title(), telefono=form.telefono.data, email=form.email.data, user_id=current_user.id)
         db.session.add(new_contact)
         db.session.commit()
         flash('Contacto añadido a la agenda', 'success')
@@ -45,12 +45,12 @@ def editar(contact_id):
     contacto = Contact.query.get_or_404(contact_id)
     form = ContactForm(obj=contacto)
     if form.validate_on_submit():
-        contacto.nombre = form.nombre.data
+        contacto.nombre = form.nombre.data.title()
         contacto.telefono = form.telefono.data
         contacto.email = form.email.data
         db.session.commit()
         flash('Contacto actualizado con éxito', 'success')
-        return redirect(url_for('agenda.agenda'))
+        return redirect(url_for('agenda.index'))
     return render_template('agenda/editar.html', form=form, contact=contacto)
 
 @login_required
@@ -69,7 +69,7 @@ def buscar():
     if request.method == 'POST':
         if form.validate_on_submit:
             contact = db.session.scalar(
-                sa.select(Contact).where(Contact.nombre == form.nombre.data))
+                sa.select(Contact).where(Contact.nombre == form.nombre.data.title()))
             if contact:
                 return redirect(url_for('agenda.detalle', contact_id=contact.id))
             else:

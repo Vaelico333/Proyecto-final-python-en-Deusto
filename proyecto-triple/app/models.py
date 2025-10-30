@@ -23,7 +23,7 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.hash_contraseña, contraseña)
     
     def update_user(self, user_id, new):
-        update = self.query.filter(self.id == user_id).update(new)
+        update = User.query.filter(User.id == user_id).update(new)
         db.session.commit()
         return update
     

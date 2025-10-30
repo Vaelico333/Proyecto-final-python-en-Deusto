@@ -1,43 +1,68 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1 id="proyecto-final-del-curso-de-python-con-deusto">Proyecto final del curso de python con Deusto</h1>
-            <p>Se me propusieron 3 opciones sencillas, pero he decidido hacer una mezcla de las 3, ya que será más interesante.</p>
+    <h1 id="inicio">Proyecto final del curso de python con Deusto</h1>
         <div class="bloque_contenido">
         <h2 id="building_construction-estructura-del-proyecto">🏗️ Estructura del proyecto</h2>
         App en Flask para contener y mostrar el proyecto:
             <ul>
-                <li><a href="#wave-página-de-bienvenida">Página de bienvenida</a>: Mensaje de bienvenida y acceso a los 3 proyectos.</li>
-                <li><a href="#card_index-proyecto-agenda">Proyecto agenda</a></li>
-                <li><a href="#person_bald-proyecto-usuarios">Proyecto usuarios</a></li>
-                <li><a href="#bar_chart-proyecto-an%C3%A1lisis">Proyecto análisis</a></li>
+                <li><a href="#página-de-bienvenida">Página de bienvenida</a></li>
+                <li><a href="#proyecto-agenda">Proyecto agenda</a></li>
+                <li><a href="#proyecto-usuarios">Proyecto usuarios</a></li>
+                <li><a href="#proyecto-análisis">Proyecto análisis</a></li>
             </ul>
         </div>
-        
+        <div id="resumen">
+        <h2>🗒️ Resumen y abstract</h2>
+        <p>En esta sección, explicaré mis razones para hacer el proyecto así y resumiré mi proceso.</p>
+        <div class="bloque_contenido">
+            <h3>Abstract</h3>
+            <p>Durante mi curso de python en Deusto, se me propusieron 3 opciones sencillas, pero he decidido hacer una mezcla de las 3, ya que será más interesante.</p>
+            <p>
+                Yo he orientado mi crecimiento profesional hacia el análisis de datos, la ciencia de datos y el <em>machine learning.</em> 
+                Pero recientemente, en parte durante el curso y en parte por mi cuenta, he descubierto lo interesante y divertido que es crear aplicaciones con una lógica 
+                compleja que otorguen soluciones de manera sencilla: esto es, programas con interfaz de usuario.
+            </p>
+            <p>
+                Python es un lenguaje maravilloso que además tiene mucho desarrollo detrás, y existen muchísimos módulos distintos para hacer miles de tareas distintas con facilidad. 
+                Sin embargo, a nivel de interfaz de usuario, muchas veces deja que desear o requiere mucho trabajo. 
+                Por eso me he interesado en aprender Flask y desarrollar una aplicación compleja, y que desarrolle tareas medianamente complicadas en el backend. 
+            </p>
+            <p>
+                Quiero, el día de mañana, si lo necesito, poder desarrollar una aplicación que no sólo sea backend, sino que tenga un frontend decente como mínimo. 
+                He jugado con PyQt5 y tengo pendiente continuar, aunque es bastante complejo, pero con ese módulo sí que podría crear aplicaciones que luego pueda convertir en un .exe y vender o regalar.
+                De todas formas, todo el trabajo de conexión, construcción y cohesión de la web me ha enseñado mucho.
+            </p>
+            <h3>Resumen del proceso</h3>
+            <p><a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">tutorial de Flask</a></p>
+            <p><a href="#inicio">⬆️</a></p>
+        </div>
+        </div>
+
         <div id="desglose">
-        <h2 id="card_file_box-desglose">🗃️ Desglose</h2>
+        <h2>🗃️ Desglose</h2>
         <p>Veamos en qué consiste cada parte.</p>
         <div class="bloque_contenido" id="bienvenida">
             <h3 id="wave-página-de-bienvenida">👋 Página de bienvenida</h3>
                 <p>Será una página en Flask con los siguientes atributos:</p>
                     <ul>
-                    <li>Mensaje de bienvenida al proyecto</li>
-                    <li>Explicación de mi decisión</li>
-                    <li>Enlaces a los 3 proyectos</li>
+                    <li>Estructura del proyecto</li>
+                    <li>Abstract y resumen</li>
+                    <li>Desglose de los 3 proyectos</li>
                     </ul>
-                <p><a href="#proyecto-final-del-curso-de-python-con-deusto">⬆️</a></p>
+                <p><a href="#inicio">⬆️</a></p>
         </div>
-        <div class="bloque_contenido" id="agenda">
-            <h3 id="card_index-proyecto-agenda">📇 Proyecto agenda</h3>
+        <div class="bloque_contenido">
+            <h3 id="proyecto-agenda">📇 Proyecto agenda</h3>
                 <p>Se trata de un gestor de contactos con la capacidad de realizar las operaciones CRUD sobre al menos 3 atributos: nombre, Nº de teléfono y email.
                 <br><strong>Restricciones y contenido</strong>:  </p>
                 <ul>
                     <li>Funciones:
                         <ul>
-                        <li>Agregar contacto</li>
-                        <li>Buscar un contacto</li>
-                        <li>Editar contacto</li>
-                        <li>Eliminar contacto</li>
-                        <li>Mostrar todos</li>
+                        <li>🛡️Agregar contacto</li>
+                        <li>🛡️Buscar un contacto</li>
+                        <li>🛡️Editar contacto</li>
+                        <li>🛡️Eliminar contacto</li>
+                        <li>🛡️Mostrar todos</li>
                         </ul>
                     <li>Control de inputs: 
                         <ul>
@@ -49,62 +74,50 @@
                 <p><strong>Observaciones</strong>:</p>
                     <ul>
                         <li>Pedir login. Mostrar a cada usuario su propia agenda.</li>
-                        <li>Crear un formulario o menú de botones con un cuadro debajo que muestre los resultados.</li>
+                        <li>Buscar contacto: formulario que redirige a una página que muestra los resultados.</li>
+                        <li>Mostrar todos: muestra los del usuario actual, o todos si es admin.</li>
                         <li>Almacenamiento: tabla en SQLite3.</li>
-                        <li>Incluir botón de vuelta a la página de bienvenida del proyecto.</li>
                     </ul>
-                <p><a href="#proyecto-final-del-curso-de-python-con-deusto">⬆️</a></p>
+                <p><a href="#inicio">⬆️</a></p>
             </div>
-            <div class="bloque_contenido" id="usuarios">
-            <h3 id="person_bald-proyecto-usuarios">🧑‍🦲 Proyecto usuarios</h3>
-                <p>Se trata de un panel de administración de usuarios.
+            <div class="bloque_contenido">
+            <h3 id="proyecto-usuarios">🧑‍🦲 Proyecto usuarios</h3>
+                <p>Se trata de un panel de administración de usuarios. 
                 <br><strong>Contenido</strong>:</p>
                     <ul>
-                    <li>Página de gestión de los usuarios:
+                    <li>🚫Página de gestión de los usuarios:
                         <ul>
-                        <li>Menú principal:
-                            <ul>
-                            <li>🛡️Ver todas: link a la tabla</li>
-                            <li>🛡️Ver entrada: link a mostrar una</li>
-                            <li>🛡️Editar entrada: link a página de edición</li>
-                            <li>🛡️Borrar entrada: link a página de borrado</li>
-                            <li>🛡️Crear entrada: link a página de creación</li>
-                            </ul>
-                        </li>
+                            <li>🚫Página de tabla: 
+                                <ul>
+                                <li>Necesario estar logeado como admin.</li> 
+                                <li>Mostrar todas las entradas en una tabla.</li>
+                                <li>Muestra todo, incluido el ID, excepto la contraseña, que es secreta.</li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
-                    <li>🛡️Página de tabla: 
-                        <ul>
-                        <li>Necesario estar logeado como admin.</li> 
-                        <li>Mostrar todas las entradas en una tabla.</li>
-                        </ul>
-                    </li>
-                    <li>🛡️Página de mostrar 1 contacto: 
-                        <ul>
-                        <li>Necesario estar logeado como admin.</li>
-                        <li>Pedir email o teléfono.</li> 
-                        </ul>
-                    </li>
-                    <li>🛡️Página con formulario de edición: 
-                        <ul>
-                        <li>Necesario estar logeado como admin.</li>
-                        <li>Permitir reescribir todos los campos.</li>
-                        </ul>
-                    </li>
-                    <li>🛡️Página con formulario de creación: 
-                        <ul>
-                            <li>Email</li>
-                            <li>Nombre</li>
-                            <li>Apellidos</li>
-                            <li>Contraseña</li>
-                            <li>Teléfono</li>
-                            <li>Edad</li>
-                        </ul>
-                    </li>
-                    <li>🛡️Página con formulario de borrado: 
+                    <li>🚫Página con formulario de edición: 
                         <ul>
                             <li>Necesario estar logeado como admin.</li>
-                            <li>Pedir confirmación de borrado.</li>
+                            <li>Requiere confirmar la contraseña del admin.</li>
+                            <li>Permite reescribir todos los campos excepto la contraseña.</li>
+                        </ul>
+                    </li>
+                    <li>Página con formulario de creación: 
+                        <ul>
+                            <li>Email: validado por wtforms.validators.Email</li>
+                            <li>Nombre</li>
+                            <li>Apellidos</li>
+                            <li>Contraseña: codificada por werkzeug.security en forma de hash antes de guardarla.</li>
+                            <li>Confirmar contraseña: debe coincidir con la contraseña.</li>
+                            <li>Teléfono: número de 9 cifras</li>
+                            <li>Edad: número entre 0 y 999</li>
+                        </ul>
+                    </li>
+                    <li>🚫Página con formulario de borrado: 
+                        <ul>
+                            <li>Necesario estar logeado como admin.</li>
+                            <li>Pide confirmación de borrado.</li>
                         </ul>
                     </li>
                     </ul>
@@ -115,9 +128,9 @@
                         <li>Incluir botón de vuelta a la página de bienvenida del proyecto.  </li>
                         <li>Incluir botón de vuelta a la página de menú principal.</li>
                     </ul>
-                <p><a href="#proyecto-final-del-curso-de-python-con-deusto">⬆️</a></p>
+                <p><a href="#inicio">⬆️</a></p>
             </div>
-            <div class="bloque_contenido" id="analisis">
+            <div class="bloque_contenido">
             <h3 id="bar_chart-proyecto-análisis">📊 Proyecto análisis</h3>
                 <p>Se trata de un dashboard de análisis de datos procedentes de un archivo csv proporcionado por la escuela.
                 <br><strong>Contenido</strong>:</p>
@@ -136,10 +149,8 @@
                     <li>Agrupar datos por día de la semana y provincias.</li>
                     <li>Página 1: menú de botones con un cuadro debajo que muestre la gráfica correspondiente. Mostrar ocurrencias por día de la semana.</li>
                     <li>Página 2: menú de botones con un cuadro debajo que muestre la gráfica correspondiente. Mostrar gráfica circular con desglose por provincias.</li>
-                    <li>Incluir botón de vuelta a la página de bienvenida del proyecto.  </li>
-                    <li>Incluir botón de vuelta a la página de bienvenida del subproyecto.</li>
                 </ul>
-                <p><a href="#proyecto-final-del-curso-de-python-con-deusto">⬆️</a></p>
+                <p><a href="#inicio">⬆️</a></p>
             </div>
             </div>
 {% endblock %}

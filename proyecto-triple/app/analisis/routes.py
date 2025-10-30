@@ -5,7 +5,7 @@ from .services import _analisis_provincia, _analisis_semana_provincia
 
 @analisis_bp.route('/analisis')
 def index():
-    return render_template('analisis/index.html', title='Análisis del COVID - España Mayo/2021')
+    return render_template('analisis/index.html', title='Análisis del COVID - España Mayo de 2021')
 
 
 @analisis_bp.route("/pie", methods=["GET", "POST"])

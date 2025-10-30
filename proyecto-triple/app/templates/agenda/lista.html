@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
         <h1>Lista de Contactos</h1>
-        <nav><a href="{{ url_for('agenda.crear') }}">Agregar Nuevo Contacto</a></nav>
+        <nav>
+            <a href="{{ url_for('agenda.crear') }}">Nuevo Contacto</a>
+            <a href="{{ url_for('agenda.buscar') }}">Buscar Contacto</a>
+        </nav>
     <div class="bloque_contenido">
-        <table border="5">
+        <table class="agenda">
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -33,6 +36,6 @@
                 {% endfor %}
             </tbody>
         </table>
-        <a href="{{ url_for('index') }}">↩️ Volver a la Página de Bienvenida</a>
+        <a href="{{ url_for('agenda.index') }}">↩️ Volver a la agenda</a>
     </div>
 {% endblock %}

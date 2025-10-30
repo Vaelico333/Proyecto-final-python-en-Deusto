@@ -38,16 +38,15 @@ def create():
 @usuarios_bp.route('/usuarios/confirmar/<int:user_id>', methods=['GET', 'POST'])
 @login_required
 def confirmar(user_id):
-    user = User.query.get_or_404(user_id)
     form = PasswordCheckForm()
     if form.validate_on_submit():
-        if not user.check_password(form.contraseña.data):
+        if not current_user.check_password(form.contraseña.data):
             flash('Contraseña incorrecta')
-            return redirect(url_for('usuarios.confirmar'))
+            return redirect(url_for('usuarios.confirmar', user_id=user_id))
         else:
             flash('Contraseña confirmada')
             return redirect(url_for('usuarios.edit',user_id=user_id))
-    return render_template('usuarios/confirmar_contraseña.html', form=form, user=user, title='Confirmar contraseña')
+    return render_template('usuarios/confirmar_contraseña.html', form=form, title='Confirmar contraseña')
 
 
 @usuarios_bp.route('/usuarios/editar/<int:user_id>', methods=['GET', 'POST'])
@@ -60,13 +59,18 @@ def edit(user_id):
         for item in form:
             if item.data and item.id != 'submit' and item.id != 'csrf_token':
                 new[item.id] = item.data
-        update = user.update_user(user_id, new)
-        if update:
-            flash('Usuario actualizado con éxito', 'success')
+        existing = User.query.filter(User.email == user.email, User.id != user.id).first()
+        if existing:
+            flash('Email ya en uso')
             return redirect(url_for('usuarios.index'))
         else:
-            flash('Usuario no encontrado', 'failure')
-            return redirect(url_for('usuarios.index'))
+            update = user.update_user(user_id, new)
+            if update:
+                flash('Usuario actualizado con éxito', 'success')
+                return redirect(url_for('usuarios.index'))
+            else:
+                flash('Usuario no encontrado', 'failure')
+                return redirect(url_for('usuarios.index'))
 
     return render_template('usuarios/editar.html', form=form, user=user, title='Editar usuario')
 
@@ -110,5 +114,5 @@ def login():
 @login_required
 def logout():
     logout_user()
-    flash('Logged out successfully!', 'success')
+    flash('Sesión cerrada con éxito', 'success')
     return redirect(url_for('usuarios.login'))
