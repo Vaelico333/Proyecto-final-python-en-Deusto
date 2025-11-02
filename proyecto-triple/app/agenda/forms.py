@@ -12,10 +12,9 @@ class ContactForm(FlaskForm):
                            validators=[DataRequired(message='Campo obligatorio'),
                                         Length(min=9, max=9, message='El número de teléfono debe tener 9 dígitos.'),
                                         Regexp(r'[\d{9}]', flags=re.UNICODE, message='El número de teléfono solo debe incluir números (no poner prefijo de país)')])
-    email = EmailField('Email', validators=[
-        DataRequired(message='Campo obligatorio'),
-        Email(message="Formato de email no válido.")
-    ])
+    email = EmailField('Email', 
+                       validators=[DataRequired(message='Campo obligatorio'),
+                                    Email(message="Formato de email no válido.")])
     submit = SubmitField('Enviar')
 
 class SearchForm(FlaskForm):

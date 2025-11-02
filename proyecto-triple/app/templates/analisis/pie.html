@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <h2>Selecciona los datos a mostrar</h2>
+        <div class="bloque_contenido" id="desglose">
+            <form method="POST" action="{{ url_for('analisis.pie') }}">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.opciones.label }}<br>
+                    {{ form.opciones }}
+                </p>
+                <p>{{ form.submit_all }}    {{ form.submit_10 }}</p>
+            </form>
+        </div>
+
+        {% if chart_data %}
+            <h3>{{ chart_title.capitalize() }}</h3>
+            <div>
+                <img src="{{ chart_data }}" alt="Gráfica de distribución por provincias" id="graf">
+            </div>
+            <div class="bloque_contenido" id="desglose">
+                <p>
+                    <u>{{ chart_title.capitalize() }}:</u><br>
+                    - <b>{{ title_result[0] }}</b> muestra el máximo de {{ chart_title }}.<br>
+                    - <b>{{ title_result[1] }}</b> muestra el mínimo de {{ chart_title }}.<br>
+                    Nota: en caso de empate en el puesto superior, se mostrará el primero en orden alfabético, y viceversa en el puesto inferior. Las provincias con 0 casos no se muestran por razones de claridad.
+                </p>
+            </div>
+        {% endif %}
+{% endblock %}

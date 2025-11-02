@@ -202,8 +202,10 @@ footer {
     border-spacing: 0;
     border: 1px solid #000;
     overflow: hidden;
-    background-color: teal;
+    color:#f5c527;
+    background-color: rgb(32, 206, 206);
     width: 100%;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -217,21 +219,22 @@ footer {
 .agenda th {
   background-color: goldenrod;
   color: blue;
+  border: 5px solid #0da74067;
+}
+
+.agenda td {
+  background-color: rgb(161, 127, 42);
+  color: rgb(2, 2, 142);
+  border: 5px solid #0da74067;
+  padding: 10px;
+  text-align: center;
 }
 
 .agenda {
-    border: 5px solid #2E8B57; 
-    background-color: rgb(255, 213, 0);
     border-collapse: collapse;
     width: 100%;
+  border: 8px solid #09632767;
 }
-
-
-.agenda th, td {
-    border: 5px solid #2E8B57;
-    padding: 10px;
-    text-align: center;
-  }
 
 #graf {
     width: 100%;

@@ -44,9 +44,9 @@ class UserEditForm(FlaskForm):
     submit = SubmitField('Actualizar Usuario')
 
 class PasswordCheckForm(FlaskForm):
-    contraseña = PasswordField('Introduce tu contraseña', 
-                               validators=[DataRequired()])
+    contraseña = PasswordField('Introduce tu contraseña')
     submit = SubmitField('Confirmar')
+    cancel = SubmitField('Cancelar')
 
 class UserLoginForm(FlaskForm):
     email = StringField('Email', 

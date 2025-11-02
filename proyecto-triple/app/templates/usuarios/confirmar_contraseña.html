@@ -20,7 +20,7 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.submit }}</p>
+        {{ form.submit }} {{ form.cancel }}
     </form>
 </div>
 {% endblock %}

@@ -50,6 +50,7 @@ def _analisis_provincia(selected):
     # Las provincias con 0 ocurrencias se apilan, quedando los nombres sobrepuestos. Por tanto, las elimino de la gráfica:
     df = df[df[selected] != 0]
 
+    # 
     top_prov = (df.groupby('province')[selected]
                 .sum().sort_values(ascending=False).head(*topN).index)
     df_plot = df[df['province'].isin(top_prov)]
@@ -63,7 +64,8 @@ def _analisis_provincia(selected):
     with sns.axes_style( rc={'axes.facecolor':'darkgrey', 'figure.facecolor':'teal'}):
         colors = sns.color_palette('Paired', n_colors=n)
         sns.set_theme(context='paper')
-        ax.pie(df_plot[selected],startangle=290, shadow=True, explode=exp, colors=colors, counterclock=False, labels=df_plot['province'], rotatelabels=True, labeldistance=1.05)
+        ax.pie(df_plot[selected],startangle=290, shadow=True, explode=exp, colors=colors, 
+               counterclock=False, labels=df_plot['province'], rotatelabels=True, labeldistance=1.05)
         ax.legend(labels=df_plot['province'] ,title='Provincias', ncol=2, bbox_to_anchor=(-0.1,1), loc='upper right')
     
     chart_data = _fig_to_data_uri()
@@ -110,8 +112,8 @@ def _analisis_semana_provincia(selected):
         ax.legend(title='Día de la semana', bbox_to_anchor=(1,0.75), loc='upper left', facecolor='silver')
         ax.set_xticks(range(len(df_plot['province'].unique())))
         ax.set_xticklabels(df_plot['province'].unique(), rotation=90, ha='center')
-        ax.set_ylabel('Provincia')
-        ax.set_xlabel(cols[selected])
+        ax.set_xlabel('Provincia')
+        ax.set_ylabel(cols[selected])
 
     plt.tight_layout()
     chart_data = _fig_to_data_uri()

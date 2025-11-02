@@ -21,11 +21,12 @@ def lista_contactos():
     if not current_user.is_authenticated:
         return current_app.login_manager.unauthorized()
     user_id = current_user.id
+    user = User()
     if user_id == 1:
         contactos = Contact.query.all()
     else:
         contactos = Contact.query.filter(Contact.user_id == user_id).all()
-    return render_template('agenda/lista.html', contactos=contactos, user_id=user_id)
+    return render_template('agenda/lista.html', contactos=contactos, user_id=user_id, user=user)
 
 @login_required
 @agenda_bp.route('/agenda/crear', methods=['GET', 'POST'])

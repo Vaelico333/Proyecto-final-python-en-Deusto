@@ -16,34 +16,133 @@
         <p>En esta sección, explicaré mis razones para hacer el proyecto así y resumiré mi proceso.</p>
         <div class="bloque_contenido">
             <h3>Abstract</h3>
-            <p>Durante mi curso de python en Deusto, se me propusieron 3 opciones sencillas, pero he decidido hacer una mezcla de las 3, ya que será más interesante.</p>
+            <p>Durante mi curso de python en Deusto, se me propusieron 3 opciones sencillas, pero he decidido hacer una mezcla de las 3, ya que será más 
+                interesante.</p>
             <p>
                 Yo he orientado mi crecimiento profesional hacia el análisis de datos, la ciencia de datos y el <em>machine learning.</em> 
-                Pero recientemente, en parte durante el curso y en parte por mi cuenta, he descubierto lo interesante y divertido que es crear aplicaciones con una lógica 
+                Pero recientemente, en parte durante el curso y en parte por mi cuenta, he descubierto lo interesante y divertido que es crear aplicaciones 
+                con una lógica 
                 compleja que otorguen soluciones de manera sencilla: esto es, programas con interfaz de usuario.
             </p>
             <p>
-                Python es un lenguaje maravilloso que además tiene mucho desarrollo detrás, y existen muchísimos módulos distintos para hacer miles de tareas distintas con facilidad. 
+                Python es un lenguaje maravilloso que además tiene mucho desarrollo detrás, y existen muchísimos módulos distintos para hacer miles de tareas
+                 distintas con facilidad. 
                 Sin embargo, a nivel de interfaz de usuario, muchas veces deja que desear o requiere mucho trabajo. 
-                Por eso me he interesado en aprender Flask y desarrollar una aplicación compleja, y que desarrolle tareas medianamente complicadas en el backend. 
+                Por eso me he interesado en aprender Flask y desarrollar una aplicación compleja, y que desarrolle tareas medianamente complicadas en el 
+                backend. 
             </p>
             <p>
-                Quiero, el día de mañana, si lo necesito, poder desarrollar una aplicación que no sólo sea backend, sino que tenga un frontend decente como mínimo. 
-                He jugado con PyQt5 y tengo pendiente continuar, aunque es bastante complejo, pero con ese módulo sí que podría crear aplicaciones que luego pueda convertir en un .exe y vender o regalar.
+                Quiero, el día de mañana, si lo necesito, poder desarrollar una aplicación que no sólo sea backend, sino que tenga un frontend decente como 
+                mínimo. 
+                He jugado con PyQt5 y tengo pendiente continuar, aunque es bastante complejo, pero con ese módulo sí que podría crear aplicaciones que luego 
+                pueda convertir en un .exe y vender o regalar.
                 De todas formas, todo el trabajo de conexión, construcción y cohesión de la web me ha enseñado mucho.
             </p>
+        </div>
+        <div class="bloque_contenido">
             <h3>Resumen del proceso</h3>
-            <p><a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">tutorial de Flask</a></p>
+            <p>
+                En un primer lugar, vi los proyectos y me parecieron muy sencillos: dos de ellos, menú infinito y funciones sencillas CRUD o análisis de datos
+                 y exposición de una gráfica.
+                Sin interfaz, usando almacenamiento de datos simple... Y luego, el otro proyecto, una interfaz de usuario con gestión de usuarios. Entonces se 
+                me ocurrió:
+                ¿por qué no juntar los tres proyectos en uno?</p>
+            <p>
+                Comencé aprendiendo más de Flask, ya que lo había usado muy poco hasta el momento, y encontré un 
+                <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">tutorial de Flask</a>
+                que fui siguiendo paso a paso. Con él, creé una primera página de ejemplo que tuviera las claves que podía yo necesitar para después construir 
+                este proyecto.
+                Con el bueno de Miguel aprendí a crear formularios, a conectarlos, a crear los modelos pertinentes (<em>User, Contact</em>) y utilizarlos, y a unir las 
+                plantillas con las funciones de <code>routes.py</code>.</p>
+            <p>Entonces estructuré mi proyecto: el análisis de datos iría por un lado, y luego los usuarios y la agenda estarían conectados. No sabía si 
+                podría hacerlo como yo quería, pero me puse a trabajar.</p>
+            <p>
+                Lo primero que hice, para ahorrar tiempo y seguir aprendiendo, ya que aún estaba un poco perdido, fue usar Github Copilot para crear una 
+                estructura de archivos funcional. Usé GPT - 5.
+                Yo ya sabía que iba a estar lleno de errores, pero me daría un buen punto de partida y algo sobre lo que trabajar. Crear todas las carpetas y 
+                archivos desde 0 me parecía muy difícil o muy largo de hacer, dada mi poca esperiencia con Flask.
+            </p>
+            <p>
+                Y efectivamente, lo que creó la IA era un desastre, pero me sirvió de punto de partida. Tras mucho debugging, creé una arquitectura en la que 
+                hay una carpeta general de plantillas,
+                y dentro de ella, carpetas individuales para cada parte de la página (<em>usuarios, agenda  y análisis</em>).
+            </p>
+            <p>
+                Luego, para la página principal existe un  <code>__init__.py</code>  propio que inicializa la app y registra las blueprints de cada uno de los 3 
+                proyectos, un  <code>models.py</code>  que contiene la clase  <em>User</em>  y un  <code>routes.py</code>  que renderiza esta página.
+            </p>
+            <p>
+                Cada proyecto recibe luego su propia carpeta con su  <code>__init__.py</code>, donde se crea la blueprint correspondiente.
+                Allí también se encuentra el archivo  <code>routes.py</code>, que gestiona la lógica backend y el renderizado de las plantillas.
+                Dado que las funcionalidades de la parte de usuarios y la de agenda son similares en origen, su estructura es similar aunque luego varíe a nivel de detalle.
+                Sin embargo, la estructura de la parte de análisis es más compleja a nivel de programación estructurada:
+            </p>
+            <ul>
+                <li><strong>Análisis</strong> presenta una página de inicio, donde se dan dos opciones y una explicación de cada una: 
+                    mostrar el análisis por días de la semana y provincia (gráfica de barras), o sólo por provincia (gráfica circular). 
+                    <br>Ambas páginas son similares, y muestran un formulario de selección de opciones (defunciones, casos, hospitalizados y UCI)
+                    y dos botones: Mostrar todo y Mostrar top 10. 
+                    <br>Al pulsar Mostrar todo, se creará y mostrará una gráfica con las 52 provincias 
+                    y un breve comentario debajo sobre la provincia con el número más alto y más bajo.
+                    <br>Al pulsar Mostrar top 10, se creará y mostrará una gráfica con las 10 provincias con los números más altos y un breve 
+                    comentario debajo sobre la provincia con el número más alto y más bajo. 
+                    <br>La carpeta contiene: 
+                    <ul>
+                        <li><code>__init__.py</code>, para guardar y exportar la blueprint</li> 
+                        <li><code>forms.py</code>, que crea el formulario de selección de datos a analizar</li>
+                        <li><code>routes.py</code>, que genera y renderiza las páginas <code>analisis/index.html</code>, <code>analisis/bar.html</code> y <code>analisis/pie.html</code></li> 
+                        <li><code>services.py</code>, que porta la lógica que gestiona, manipula y analiza los datos, y crea las gráficas en tiempo real</li>               
+                    </ul>
+                </li><br>
+                <li><strong>Agenda</strong> presenta una página de bienvenida (requiere login) al gestor de contactos, donde se muestran 3 botones: Nuevo contacto, Ver lista de contactos y Buscar contacto.
+                    <br>Nuevo contacto nos lleva a una página con un formulario donde podremos introducir email, nombre y número de teléfono del contacto a crear. 
+                    Se creará como propiedad del usuario que esté conectado. En la parte inferior, un enlace nos permite volver a la bienvenida de la agenda.
+                    <br>Ver lista de contactos nos lleva a una página donde se muestra una tabla que recoge todos los contactos pertenecientes al usuario actual.
+                    Si el usuario es administrador (usuario con ID 1), podrá ver los contactos creados por todos los usuarios, y el email del propietario de cada contacto.
+                    La tabla muestra el nombre del contacto, teléfono, email, propietario (si eres admin) y acciones, que incluye 3 botones que llevan a editar el contacto, ver el contacto en detalle y eliminar contacto.
+                    <br>Buscar contacto nos lleva a una página con un formulario sencillo para hacer una búsqueda por nombre.
+                    <br>La carpeta contiene: 
+                    <ul>
+                        <li><code>__init__.py</code>, para guardar y exportar la blueprint</li>
+                        <li><code>forms.py</code>, que crea los formularios de creación y búsqueda de contactos</li>
+                        <li><code>routes.py</code>, que genera y renderiza las páginas <code>agenda.html</code>, <code>agenda/buscar.html</code>, <code>agenda/editar.html</code>, <code>agenda/lista.html</code>, <code>agenda/ver_contacto.html</code> y <code>agenda/crear.html</code></li> 
+                        <li><code>models.py</code>, que crea la clase Contact, la cual contiene todos los atributos de un contacto de la agenda y el nombre de la tabla de la base de datos en la que se guardará</li>
+                    </ul>
+                </li><br>
+                <li><strong>Usuarios</strong> es diferente, ya que sólo el admin puede acceder al panel de gestión de usuarios. Los usuarios comunes podrá crear su perfil, 
+                    usarlo para acceder a la agenda y cerrar sesión.
+                    <br>Estando desconectado, al pulsar Acceder en la parte superior de la página, se mostrará la página de login, donde se pide email y contraseña. 
+                    También se mostrará al intentar acceder a la agenda, ya que se necesita estar logueado para interactuar con ésta.
+                    <br>Si no se tiene un usuario aún, se podrá crear uno desde el enlace al pie de la página de login. 
+                    Se pedirá email, nombre, apellidos, teléfono, edad y dos veces la contraseña para reducir errores al escribirla.
+                    Todos estos datos se validan en formulario de acuerdo a su tipo mediante wtforms. Una vez creado el usuario, se redirige a login.
+                    <br>Una vez iniciada la sesión en la página, se podrá acceder a la agenda. Si el usuario es el administrador, podrá acceder al panel de gestión de usuarios.
+                    <br>Al acceder como admin, se redirigirá al panel de gestión de usuarios. Este consiste en un botón para crear nuevos usuarios, y una tabla que contiene
+                    todos los datos de cada usuario existente en la base de datos, excepto la contraseña. También hay dos opciones disponibles para cada usuario: editar y borrar.
+                    Ambas opciones piden confirmación.
+                    <br>La carpeta contiene: 
+                    <ul>
+                        <li><code>__init__.py</code>, para guardar y exportar la blueprint</li> 
+                        <li><code>forms.py</code>, que crea los formularios de creación, edición, login, borrado y comprobación de contraseña</li>
+                        <li><code>routes.py</code>, que genera y renderiza las páginas <code>usuarios/tabla.html</code>, <code>usuarios/borrar.html</code>, <code>usuarios/confirmar_contraseña.html</code>, <code>usuarios/crear.html</code>, <code>usuarios/editar.html</code> y <code>usuarios/login.html</code></li>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                A nivel de plantillas, todas están recogidas en <code>app/templates</code>, separando las plantillas de cada proyecto en su carpeta correspondiente. 
+                Para dar un aspecto generalmente uniforme y crear una barra de navegación superior, además de incluir el nombre del proyecto (que es un enlace que lleva al inicio),
+                creé una plantilla base llamada <code>base.html</code>, la cual utilizan todas las páginas como marco, e incluye título, cabecera, navegación, mensajes flash si existen, y pie de página.
+            </p>
             <p><a href="#inicio">⬆️</a></p>
         </div>
         </div>
 
         <div id="desglose">
-        <h2>🗃️ Desglose</h2>
+        <h2>🗃️ Esquema</h2>
         <p>Veamos en qué consiste cada parte.</p>
         <div class="bloque_contenido" id="bienvenida">
             <h3 id="wave-página-de-bienvenida">👋 Página de bienvenida</h3>
-                <p>Será una página en Flask con los siguientes atributos:</p>
+                <p>Página en Flask con los siguientes atributos:</p>
                     <ul>
                     <li>Estructura del proyecto</li>
                     <li>Abstract y resumen</li>
@@ -53,27 +152,18 @@
         </div>
         <div class="bloque_contenido">
             <h3 id="proyecto-agenda">📇 Proyecto agenda</h3>
-                <p>Se trata de un gestor de contactos con la capacidad de realizar las operaciones CRUD sobre al menos 3 atributos: nombre, Nº de teléfono y email.
-                <br><strong>Restricciones y contenido</strong>:  </p>
-                <ul>
-                    <li>Funciones:
+                <p>Se trata de un gestor de contactos con la capacidad de realizar las operaciones CRUD sobre 3 atributos: nombre, Nº de teléfono y email.
+                <br><strong>Contenido</strong>:  </p>
                         <ul>
-                        <li>🛡️Agregar contacto</li>
-                        <li>🛡️Buscar un contacto</li>
-                        <li>🛡️Editar contacto</li>
-                        <li>🛡️Eliminar contacto</li>
-                        <li>🛡️Mostrar todos</li>
+                            <li>🛡️Agregar contacto</li>
+                            <li>🛡️Buscar un contacto</li>
+                            <li>🛡️Editar contacto</li>
+                            <li>🛡️Eliminar contacto</li>
+                            <li>🛡️Mostrar todos</li>
                         </ul>
-                    <li>Control de inputs: 
-                        <ul>
-                        <li>RegEx (nombre: letras, tlf: 9 dígitos, email: <code>x@x.x</code>)</li>
-                        <li>Herramientas integradas de Flask.</li>
-                        </ul></li>
-                </ul>
-
                 <p><strong>Observaciones</strong>:</p>
                     <ul>
-                        <li>Pedir login. Mostrar a cada usuario su propia agenda.</li>
+                        <li>Pide login. Mostrar a cada usuario su propia agenda.</li>
                         <li>Buscar contacto: formulario que redirige a una página que muestra los resultados.</li>
                         <li>Mostrar todos: muestra los del usuario actual, o todos si es admin.</li>
                         <li>Almacenamiento: tabla en SQLite3.</li>
@@ -85,24 +175,9 @@
                 <p>Se trata de un panel de administración de usuarios. 
                 <br><strong>Contenido</strong>:</p>
                     <ul>
-                    <li>🚫Página de gestión de los usuarios:
-                        <ul>
-                            <li>🚫Página de tabla: 
-                                <ul>
-                                <li>Necesario estar logeado como admin.</li> 
-                                <li>Mostrar todas las entradas en una tabla.</li>
-                                <li>Muestra todo, incluido el ID, excepto la contraseña, que es secreta.</li>
-                                </ul>
-                            </li>
-                        </ul>
+                    <li>🚫Página de gestión de los usuarios
                     </li>
-                    <li>🚫Página con formulario de edición: 
-                        <ul>
-                            <li>Necesario estar logeado como admin.</li>
-                            <li>Requiere confirmar la contraseña del admin.</li>
-                            <li>Permite reescribir todos los campos excepto la contraseña.</li>
-                        </ul>
-                    </li>
+                    <li>🚫Página con formulario de edición 
                     <li>Página con formulario de creación: 
                         <ul>
                             <li>Email: validado por wtforms.validators.Email</li>
@@ -114,19 +189,12 @@
                             <li>Edad: número entre 0 y 999</li>
                         </ul>
                     </li>
-                    <li>🚫Página con formulario de borrado: 
-                        <ul>
-                            <li>Necesario estar logeado como admin.</li>
-                            <li>Pide confirmación de borrado.</li>
-                        </ul>
-                    </li>
+                    <li>🚫Página con formulario de borrado</li>
                     </ul>
                 <p><strong>Observaciones</strong>:</p>
                     <ul>
                         <li>Árbol de páginas web interconectadas</li>
                         <li>Almacenamiento: tabla en SQLite.</li>
-                        <li>Incluir botón de vuelta a la página de bienvenida del proyecto.  </li>
-                        <li>Incluir botón de vuelta a la página de menú principal.</li>
                     </ul>
                 <p><a href="#inicio">⬆️</a></p>
             </div>

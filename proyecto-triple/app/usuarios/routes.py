@@ -26,7 +26,6 @@ def create():
                 apellidos=form.apellidos.data.title(),
                 telefono=form.telefono.data,
                 edad=form.edad.data,
-                #hash_contraseña=hash_contraseña
             )
             user.set_password(form.contraseña.data)
             db.session.add(user)
@@ -40,12 +39,15 @@ def create():
 def confirmar(user_id):
     form = PasswordCheckForm()
     if form.validate_on_submit():
-        if not current_user.check_password(form.contraseña.data):
-            flash('Contraseña incorrecta')
-            return redirect(url_for('usuarios.confirmar', user_id=user_id))
-        else:
-            flash('Contraseña confirmada')
-            return redirect(url_for('usuarios.edit',user_id=user_id))
+        if form.cancel.data:
+            return redirect(url_for('usuarios.index'))
+        elif form.submit.data:
+            if not current_user.check_password(form.contraseña.data):
+                flash('Contraseña incorrecta')
+                return redirect(url_for('usuarios.confirmar', user_id=user_id))
+            else:
+                flash('Contraseña confirmada')
+                return redirect(url_for('usuarios.edit',user_id=user_id))
     return render_template('usuarios/confirmar_contraseña.html', form=form, title='Confirmar contraseña')
 
 

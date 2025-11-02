@@ -25,12 +25,12 @@
                     <td>{{ c.telefono }}</td>
                     <td>{{ c.email }}</td>
                     {% if user_id == 1 %}
-                    <td>{{ c.user_id }}</td>
+                    <td>{{ user.query.get(c.user_id).email }}</td>
                     {% endif %}
                     <td>
-                        <a href="{{ url_for('agenda.editar', contact_id=c.id) }}">Editar</a>
-                        <a href="{{ url_for('agenda.detalle', contact_id=c.id) }}">Detalles</a>
-                        <a href="{{ url_for('agenda.borrar', contact_id=c.id) }}">Eliminar</a>
+                        <a href="{{ url_for('agenda.editar', contact_id=c.id) }}"><button>Editar</button></a><br>
+                        <a href="{{ url_for('agenda.detalle', contact_id=c.id) }}"><button>Detalles</button></a><br>
+                        <a href="{{ url_for('agenda.borrar', contact_id=c.id) }}"><button>Eliminar</button></a><br>
                     </td>
                 </tr>
                 {% endfor %}

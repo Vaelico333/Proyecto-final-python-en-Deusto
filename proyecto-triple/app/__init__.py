@@ -11,7 +11,6 @@ db.init_app(app)
 acceso = LoginManager(app)
 acceso.login_view = 'usuarios.login'
 
-# Importar y registrar blueprints
 from .agenda import agenda_bp as agenda_blueprint
 from .usuarios import usuarios_bp as usuarios_blueprint
 from .analisis import analisis_bp as analisis_blueprint
