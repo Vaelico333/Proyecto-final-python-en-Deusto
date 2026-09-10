@@ -9,7 +9,28 @@ Se me propusieron 3 opciones sencillas, pero he decidido hacer una mezcla de las
   - [Proyecto agenda](#card_index-proyecto-agenda)
   - [Proyecto usuarios](#person_bald-proyecto-usuarios)
   - [Proyecto análisis](#bar_chart-proyecto-análisis)
+## Instalación
 
+1. **Clonar el repositorio**:
+   ```bash
+   git clone https://github.com/Vaelico333/Proyecto-final-python-en-Deusto.git
+   cd proyecto
+   ```
+   O selecciona *clonar* desde la página de Github del proyecto.
+2. **Crear el entorno virtual**:
+   ```python3
+   -m venv triplevenv
+    # En Linux: source triplevenv/bin/activate  
+    # En Windows: triplevenv\Scripts\activate
+    ```
+3. **Instalar dependencias**:
+    ```pip install -r requirements.txt```
+4. **Ejecutar la app**:
+    ```bash
+    flask run```
+5. **Detener la app**:
+    Basta con pulsar Ctrl+C
+   
 ## :card_file_box: Desglose
 
 Veamos en qué consiste cada parte.
