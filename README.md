@@ -27,7 +27,8 @@ Se me propusieron 3 opciones sencillas, pero he decidido hacer una mezcla de las
     ```pip install -r requirements.txt```
 4. **Ejecutar la app**:
     ```bash
-    flask run```
+    flask run
+    ```
 5. **Detener la app**:
     Basta con pulsar Ctrl+C
    
