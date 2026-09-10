@@ -5,7 +5,7 @@ Se me propusieron 3 opciones sencillas, pero he decidido hacer una mezcla de las
 ## :building_construction: Estructura del proyecto
 
 - App en Flask para contener y mostrar el proyecto
-  - [Página de bienvenida](#wave-página-de-bienvenida): Mensaje de bienvenida y acceso a los 3 proyectos.
+  - [Página de bienvenida](#wave-página-de-bienvenida)
   - [Proyecto agenda](#card_index-proyecto-agenda)
   - [Proyecto usuarios](#person_bald-proyecto-usuarios)
   - [Proyecto análisis](#bar_chart-proyecto-análisis)
