@@ -8,3 +8,4 @@ seaborn
 Werkzeug
 python-dotenv
 email_validator
+gunicorn
